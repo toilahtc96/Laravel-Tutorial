@@ -3,10 +3,11 @@
 @section('content')
     <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading">
-
-                <h2> Tickets </h2>
-            </div>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             @if ($tickets->isEmpty())
                 <p> There is no ticket.</p>
             @else

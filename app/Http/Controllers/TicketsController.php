@@ -62,6 +62,8 @@ class TicketsController extends Controller
     {
         //
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
+       // $comments = $ticket->comments()->get();
+        // return view('tickets.show',compact('ticket','comments'));
         return view('tickets.show',compact('ticket'));
     }
     public function contact(){
@@ -110,8 +112,11 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->delete();
+        return redirect('/tickets')->with('status','The ticket'.$slug.'has been deleted');
         //
     }
 
