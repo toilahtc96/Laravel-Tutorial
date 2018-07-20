@@ -36,3 +36,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('users/register', 'Auth\RegisterController@register');
+
+Route::get('../users/logout','Auth\RegisterController@logout');
